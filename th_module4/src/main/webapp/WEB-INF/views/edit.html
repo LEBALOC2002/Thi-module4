@@ -16,7 +16,7 @@
                 <p th:text="${city.cityName}"></p>
             </div>
             <div class="col-lg-3">
-                <a href="/home" class="btn btn-outline-success float-right">Xem Danh Sách Thành Phố</a>
+                <a href="/" class="btn btn-outline-success float-right">Xem Danh Sách Thành Phố</a>
             </div>
         </div>
         <form method="post" th:object="${city}" id="form-edit">
@@ -53,7 +53,7 @@
             </div>
             <div class="justify-content-center row w-100">
                 <button class="btn btn-outline-success mr-2" type="submit">Cập Nhật</button>
-                <a th:href="@{/home}" class="btn btn-outline-danger" th:text="Thoát"></a>
+                <a th:href="@{/}" class="btn btn-outline-danger" th:text="Thoát"></a>
             </div>
         </form>
         <div class="bg-danger text-white w-75">

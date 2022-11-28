@@ -6,28 +6,28 @@
 <body>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-lg-9">Danh Sách Thành Phố</div>
+        <div class="col-lg-9" style="font-size: 30px">City List <br></div>
         <div class="col-lg-3">
-            <a class="btn btn-outline-success float-right" th:href="@{/home/create}">Thêm Thành Phố</a>
+            <a class="btn btn-outline-success float-right" th:href="@{/create}">New add city</a>
         </div>
     </div>
     <table class="table table-striped mt-2 border-1">
         <thead>
         <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>Thành Phố</th>
             <th>Quốc Gia</th>
-            <th colspan="2"></th>
+            <th colspan="2" class="text-center">ACTION</th>
         </tr>
         </thead>
         <tbody class="border-1">
         <th:block th:each="city : ${cities}">
             <tr>
                 <td th:text="${city.id}"></td>
-                <td><a  th:text="${city.cityName}" th:href="@{/home/__${city.id}__}"></a></td>
+                <td><a  th:text="${city.cityName}" th:href="@{/__${city.id}__}"></a></td>
                 <td th:text="${city.country.countryName}"></td>
-                <td><a th:href="@{/home/edit/__${city.id}__}" class="float-right btn btn-link">Chỉnh sửa</a></td>
-                <td><button class="float-left btn btn-link btnDeleted" th:data-id="${city.id}" th:data-text="${city.cityName}">Xóa</button></td>
+                <td><a th:href="@{/edit/__${city.id}__}" class="float-right btn btn-link"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><button class="float-left btn btn-link btnDeleted" th:data-id="${city.id}" th:data-text="${city.cityName}"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
         </th:block>
         </tbody>
@@ -39,10 +39,10 @@
     $(".btnDeleted").on("click",function (){
         let idCity =  $(this).data("id");
         let cityName =  $(this).data("text");
-        let message = "Bạn có chắc chắn muốn xóa thành phố" + cityName;
+        let message = "Bạn có chắc chắn muốn xóa thành phố " + cityName;
         App.showConfirmDialog(message,"Xóa Thành Phố" ).then((result)=>{
             if (result.isConfirmed){
-                window.location.href = "/home/deleted/"+idCity;
+                window.location.href = "/deleted/"+idCity;
             }
         })
     })

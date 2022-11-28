@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class CityController {
     @Autowired
     private ICityService cityService;
@@ -58,6 +58,7 @@ public class CityController {
         }
         City newCity = city.get();
         modelAndView.addObject("city", newCity);
+        modelAndView.setViewName("/edit");
         return modelAndView;
     }
 
@@ -113,7 +114,6 @@ public class CityController {
     public ModelAndView editCity(@PathVariable Long id, @Validated @ModelAttribute City city, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
         List<City> cities = (List<City>) cityService.findAll();
-        modelAndView.addObject("cities", cities);
         if (result.hasFieldErrors()) {
             List<String> errors = new ArrayList<>();
             List<ObjectError> list = result.getAllErrors();
@@ -125,8 +125,9 @@ public class CityController {
             modelAndView.setViewName("/edit");
             return modelAndView;
         }
-        modelAndView.setViewName("/list");
         cityService.save(city);
+        modelAndView.setViewName("/list");
+        modelAndView.addObject("cities", cities);
         return modelAndView;
     }
 

@@ -16,7 +16,7 @@
                 <p th:text="${city.cityName}"></p>
             </div>
             <div class="col-lg-3">
-                <a href="/home" class="btn btn-outline-success float-right">Xem Danh Sách Thành Phố</a>
+                <a href="/" class="btn btn-outline-success float-right">Xem Danh Sách Thành Phố</a>
             </div>
         </div>
         <div class="mt-3">
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="justify-content-end">
-            <a class="btn btn-outline-info" th:href="@{/home/edit/__${city.id}__}">Chỉnh Sửa</a>
+            <a class="btn btn-outline-info" th:href="@{/edit/__${city.id}__}">Chỉnh Sửa</a>
             <button class="btn btn-outline-danger btnDeleted" th:data-id="${city.id}" th:data-text="${city.cityName}">Xóa</button>
         </div>
     </div>
